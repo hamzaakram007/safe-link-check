@@ -1,7 +1,9 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { checkUrl } from "@/lib/check-url";
+import { buildShareUrl, readSharedUrlParam } from "@/lib/share";
 import type { CheckResult } from "@/lib/types";
 import { ResultCard } from "./ResultCard";
 
@@ -9,28 +11,54 @@ const EXAMPLES = [
   "https://store.playstation.com/",
   "http://free-gta6-pc-download.bad.example/setup.exe",
   "https://bit.ly/not-a-real-store",
+  "https://rockstar-login-secure.xyz/verify-account",
 ];
 
 export function UrlChecker() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [value, setValue] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<CheckResult | null>(null);
   const [isPending, startTransition] = useTransition();
+  const [hydratedShare, setHydratedShare] = useState(false);
 
   const canSubmit = useMemo(() => value.trim().length > 0 && !isPending, [value, isPending]);
 
-  function runCheck(raw: string) {
+  function syncShareParam(raw: string) {
+    const origin = typeof window !== "undefined" ? window.location.origin : "";
+    const next = buildShareUrl(origin || "https://safe-link-check-jade.vercel.app", raw);
+    const relative = `${pathname}?${new URL(next).searchParams.toString()}`;
+    router.replace(relative, { scroll: false });
+  }
+
+  function runCheck(raw: string, opts?: { syncUrl?: boolean }) {
     setError(null);
     startTransition(() => {
       try {
         const next = checkUrl(raw);
         setResult(next);
+        if (opts?.syncUrl !== false) {
+          syncShareParam(raw);
+        }
       } catch (e) {
         setResult(null);
         setError(e instanceof Error ? e.message : "Could not check that URL.");
       }
     });
   }
+
+  useEffect(() => {
+    if (hydratedShare) return;
+    const shared = readSharedUrlParam(searchParams);
+    setHydratedShare(true);
+    if (!shared) return;
+    setValue(shared);
+    runCheck(shared, { syncUrl: false });
+    // Initial deep-link hydration only
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, hydratedShare]);
 
   return (
     <div className="stack-gap">

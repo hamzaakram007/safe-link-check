@@ -1,7 +1,8 @@
 import { Disclaimer } from "@/components/Disclaimer";
 import { DiscordStub } from "@/components/DiscordStub";
 import { OfficialStores } from "@/components/OfficialStores";
-import { UrlChecker } from "@/components/UrlChecker";
+import { TrustBanner } from "@/components/TrustBanner";
+import { UrlCheckerBoundary } from "@/components/UrlCheckerBoundary";
 import { getPatternsMeta } from "@/lib/check-url";
 
 export default function Home() {
@@ -16,16 +17,19 @@ export default function Home() {
         <p className="tag">Educational MVP</p>
       </header>
 
+      <TrustBanner />
+
       <section className="hero">
         <h1>Paste a link. Spot fake download &amp; scam patterns fast.</h1>
         <p>
           Built for launch-week noise: phishing pages, “free Ultimate Edition” traps, and
           fake PC installers when the real game is console-only. Heuristics — not a scanner.
+          Results are shareable via a <code>?u=</code> permalink.
         </p>
       </section>
 
       <section className="checker-panel" aria-label="URL checker">
-        <UrlChecker />
+        <UrlCheckerBoundary />
       </section>
 
       <OfficialStores />
@@ -37,7 +41,10 @@ export default function Home() {
       </p>
 
       <footer className="site-footer">
-        <span>Independent tool — unaffiliated with Rockstar, Take-Two, PlayStation, or Xbox.</span>
+        <span>
+          Independent tool — unaffiliated with Rockstar, Take-Two, PlayStation, or Xbox. Not
+          antivirus.
+        </span>
         <a href="https://github.com/hamzaakram007/safe-link-check">Source on GitHub</a>
       </footer>
     </main>

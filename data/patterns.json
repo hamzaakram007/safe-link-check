@@ -1,11 +1,11 @@
 {
-  "version": 1,
+  "version": 2,
   "updated": "2026-11-18",
   "officialStores": [
     {
       "name": "PlayStation Store",
       "url": "https://store.playstation.com/",
-      "note": "Official PS5 storefront"
+      "note": "Official PS5 storefront — buy console editions here"
     },
     {
       "name": "Xbox / Microsoft Store",
@@ -13,22 +13,39 @@
       "note": "Official Xbox Series X|S storefront"
     },
     {
-      "name": "Rockstar Games Launcher / Store",
+      "name": "Rockstar Games Store",
       "url": "https://store.rockstargames.com/",
       "note": "Publisher store — console editions when listed"
+    },
+    {
+      "name": "PlayStation (site)",
+      "url": "https://www.playstation.com/",
+      "note": "Official PlayStation news & store links"
+    },
+    {
+      "name": "Xbox (site)",
+      "url": "https://www.xbox.com/",
+      "note": "Official Xbox news & store links"
     }
   ],
   "allowlistHosts": [
     "store.playstation.com",
     "www.playstation.com",
     "playstation.com",
+    "direct.playstation.com",
+    "blog.playstation.com",
     "www.xbox.com",
     "xbox.com",
     "www.microsoft.com",
     "microsoft.com",
+    "www.microsoft.com",
+    "account.microsoft.com",
+    "login.live.com",
     "store.rockstargames.com",
     "www.rockstargames.com",
-    "rockstargames.com"
+    "rockstargames.com",
+    "support.rockstargames.com",
+    "socialclub.rockstargames.com"
   ],
   "blocklistHosts": [
     {
@@ -45,6 +62,21 @@
       "host": "rockstar-support-verify.example",
       "reason": "Phishing brand-impersonation support domain",
       "severity": "scam"
+    },
+    {
+      "host": "gta6-steam-key.example",
+      "reason": "Fake Steam key giveaway domain pattern",
+      "severity": "scam"
+    },
+    {
+      "host": "playstation-reward-claim.example",
+      "reason": "Fake PlayStation reward claim phishing pattern",
+      "severity": "scam"
+    },
+    {
+      "host": "xbox-gift-redeem.example",
+      "reason": "Fake Xbox gift redeem phishing pattern",
+      "severity": "scam"
     }
   ],
   "hostKeywords": [
@@ -58,6 +90,24 @@
       "id": "hk-gta-vi-pc",
       "pattern": "gta-vi-pc",
       "reason": "Host markets PC GTA VI download",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-gtavi-pc",
+      "pattern": "gtavi-pc",
+      "reason": "Host markets PC GTA VI download",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-gta6download",
+      "pattern": "gta6download",
+      "reason": "Fake GTA 6 download host naming",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-gta6full",
+      "pattern": "gta6full",
+      "reason": "Full-game download lure in hostname",
       "severity": "scam"
     },
     {
@@ -81,6 +131,12 @@
     {
       "id": "hk-free-gta",
       "pattern": "free-gta",
+      "reason": "Free-game lure in hostname",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-freegta",
+      "pattern": "freegta",
       "reason": "Free-game lure in hostname",
       "severity": "scam"
     },
@@ -109,6 +165,12 @@
       "severity": "scam"
     },
     {
+      "id": "hk-rockstar-support",
+      "pattern": "rockstar-support",
+      "reason": "Fake Rockstar support host (impersonation)",
+      "severity": "scam"
+    },
+    {
       "id": "hk-steam-gta6",
       "pattern": "steam-gta6",
       "reason": "Fake Steam GTA 6 listing host",
@@ -131,6 +193,72 @@
       "pattern": "mega-gta",
       "reason": "File-host mega pack lure for fake installs",
       "severity": "suspicious"
+    },
+    {
+      "id": "hk-cdn-gta",
+      "pattern": "cdn-gta",
+      "reason": "Fake CDN download host for game packs",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-psn-verify",
+      "pattern": "psn-verify",
+      "reason": "Fake PSN verification host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-xbox-redeem",
+      "pattern": "xbox-redeem",
+      "reason": "Fake Xbox redeem / gift host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-giftcard",
+      "pattern": "giftcard",
+      "reason": "Gift-card claim lure host",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-giveaway-gta",
+      "pattern": "giveaway",
+      "reason": "Giveaway lure host — often phishing",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-preinstall",
+      "pattern": "preinstall",
+      "reason": "Fake preinstall / early access download host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-early-access-gta",
+      "pattern": "early-access",
+      "reason": "Fake early-access download host",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-mod-menu",
+      "pattern": "modmenu",
+      "reason": "Mod-menu / cheat download host — malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-mod-menu-hyphen",
+      "pattern": "mod-menu",
+      "reason": "Mod-menu / cheat download host — malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-softonic-style",
+      "pattern": "download-gta",
+      "reason": "Third-party “download GTA” host pattern",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-iso-download",
+      "pattern": "iso-download",
+      "reason": "ISO / disc image download host — not how consoles buy games",
+      "severity": "scam"
     }
   ],
   "pathKeywords": [
@@ -168,6 +296,12 @@
       "id": "pk-gta-vi.exe",
       "pattern": "gta-vi.exe",
       "reason": "Fake game executable filename",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-setup.msi",
+      "pattern": "setup.msi",
+      "reason": "Windows installer package in URL",
       "severity": "scam"
     },
     {
@@ -229,6 +363,96 @@
       "pattern": ".rar",
       "reason": "RAR archive download — common malware dropper",
       "severity": "suspicious"
+    },
+    {
+      "id": "pk-7z-download",
+      "pattern": ".7z",
+      "reason": "7z archive download — common malware dropper",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-scr",
+      "pattern": ".scr",
+      "reason": "Windows screensaver executable — classic malware lure",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-bat",
+      "pattern": ".bat",
+      "reason": "Batch script download path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-cmd",
+      "pattern": ".cmd",
+      "reason": "Command script download path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-dmg",
+      "pattern": ".dmg",
+      "reason": "Mac disk image download — not a console store path",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-seed-phrase",
+      "pattern": "seed-phrase",
+      "reason": "Seed-phrase / wallet recovery phishing path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-connect-wallet",
+      "pattern": "connect-wallet",
+      "reason": "Connect-wallet phishing path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-login-rockstar",
+      "pattern": "rockstar-login",
+      "reason": "Fake Rockstar login path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-psn-login",
+      "pattern": "psn-login",
+      "reason": "Fake PSN login path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-steam-key",
+      "pattern": "steam-key",
+      "reason": "Fake Steam key claim path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-free-key",
+      "pattern": "free-key",
+      "reason": "Free license key lure path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-beta-invite",
+      "pattern": "beta-invite",
+      "reason": "Fake beta invite claim path",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-preorder-now",
+      "pattern": "preorder-now",
+      "reason": "Aggressive preorder CTA path outside known stores",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-download-now",
+      "pattern": "download-now",
+      "reason": "Aggressive download CTA path",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-get-installer",
+      "pattern": "get-installer",
+      "reason": "Installer lure path",
+      "severity": "scam"
     }
   ],
   "queryKeywords": [
@@ -248,6 +472,48 @@
       "id": "qk-ref-crypto",
       "pattern": "wallet=",
       "reason": "Wallet parameter in query — crypto phishing risk",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-seed",
+      "pattern": "seed=",
+      "reason": "Seed parameter — wallet theft risk",
+      "severity": "scam"
+    },
+    {
+      "id": "qk-private-key",
+      "pattern": "private_key",
+      "reason": "Private key in query — credential theft",
+      "severity": "scam"
+    },
+    {
+      "id": "qk-exe",
+      "pattern": "file=setup",
+      "reason": "Setup file parameter — installer lure",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-redir",
+      "pattern": "redirect=",
+      "reason": "Open redirect parameter — destination may be hidden",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-url-param",
+      "pattern": "url=http",
+      "reason": "Nested URL parameter — often used to mask phishing",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-claim",
+      "pattern": "claim=1",
+      "reason": "Claim CTA query — common in giveaway scams",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-token-gift",
+      "pattern": "gift_token",
+      "reason": "Gift token claim query",
       "severity": "suspicious"
     }
   ],
@@ -287,6 +553,42 @@
       "type": "url_shortener",
       "reason": "URL shortener hides the real destination",
       "severity": "suspicious"
+    },
+    {
+      "id": "h-suspicious-tld",
+      "type": "suspicious_tld",
+      "reason": "Host uses a TLD frequently abused for malware / phishing drop sites",
+      "severity": "suspicious"
+    },
+    {
+      "id": "h-credentials-in-url",
+      "type": "credentials_in_url",
+      "reason": "Username/password embedded in the URL — classic phishing pattern",
+      "severity": "scam"
+    },
+    {
+      "id": "h-brand-lookalike",
+      "type": "brand_lookalike",
+      "reason": "Host looks like a Rockstar / PlayStation / Xbox / Steam brand but is not on the official allowlist",
+      "severity": "scam"
+    },
+    {
+      "id": "h-double-extension",
+      "type": "double_extension",
+      "reason": "Filename uses a double extension (e.g. .pdf.exe) — common malware disguise",
+      "severity": "scam"
+    },
+    {
+      "id": "h-long-query",
+      "type": "long_query",
+      "reason": "Very long query string — often used to hide tracking or phishing payloads",
+      "severity": "suspicious"
+    },
+    {
+      "id": "h-nonstandard-port",
+      "type": "nonstandard_port",
+      "reason": "Non-standard web port — unusual for real storefronts",
+      "severity": "suspicious"
     }
   ],
   "shortenerHosts": [
@@ -299,7 +601,57 @@
     "buff.ly",
     "rebrand.ly",
     "cutt.ly",
-    "shorturl.at"
+    "shorturl.at",
+    "tiny.cc",
+    "rb.gy",
+    "t.ly",
+    "short.io",
+    "bl.ink",
+    "lnkd.in",
+    "s.id",
+    "v.gd",
+    "soo.gd",
+    "clck.ru"
+  ],
+  "suspiciousTlds": [
+    "xyz",
+    "top",
+    "icu",
+    "click",
+    "loan",
+    "gq",
+    "tk",
+    "ml",
+    "cf",
+    "ga",
+    "buzz",
+    "work",
+    "zip",
+    "mov",
+    "country",
+    "rest",
+    "cfd",
+    "sbs",
+    "cyou",
+    "monster"
+  ],
+  "brandLookalikeTokens": [
+    "rockstar",
+    "rockstargames",
+    "playstation",
+    "playstationstore",
+    "xbox",
+    "microsoftstore",
+    "steamcommunity",
+    "steampowered",
+    "epicgames",
+    "take-two",
+    "taketwo",
+    "socialclub",
+    "psn",
+    "gta6",
+    "gtavi",
+    "grandtheftauto"
   ],
   "pcClaimRegexes": [
     "gta\\s*6.*pc",
@@ -307,6 +659,14 @@
     "pc.*gta\\s*6",
     "pc.*gta\\s*vi",
     "grand\\s*theft\\s*auto.*pc.*download",
-    "download.*gta.*pc"
+    "download.*gta.*pc",
+    "gta\\s*6.*download.*pc",
+    "pc\\s*version.*gta",
+    "gta\\s*6.*installer",
+    "gta\\s*vi.*installer",
+    "gta\\s*6.*setup",
+    "gta\\s*vi.*setup",
+    "steam.*gta\\s*6.*key",
+    "free.*gta\\s*6.*download"
   ]
 }

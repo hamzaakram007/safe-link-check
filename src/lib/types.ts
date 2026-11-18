@@ -15,6 +15,7 @@ export type CheckResult = {
   score: number;
   hits: PatternHit[];
   summary: string;
+  nextSteps: string[];
   checkedAt: string;
   isOfficialStore: boolean;
 };
@@ -36,5 +37,7 @@ export type PatternsData = {
   queryKeywords: { id: string; pattern: string; reason: string; severity: Verdict }[];
   heuristics: { id: string; type: string; reason: string; severity: Verdict }[];
   shortenerHosts: string[];
+  suspiciousTlds: string[];
+  brandLookalikeTokens: string[];
   pcClaimRegexes: string[];
 };

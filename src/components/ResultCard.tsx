@@ -1,3 +1,8 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { getOfficialStores } from "@/lib/check-url";
+import { buildShareUrl } from "@/lib/share";
 import type { CheckResult, Verdict } from "@/lib/types";
 
 const VERDICT_LABEL: Record<Verdict, string> = {
@@ -6,14 +11,60 @@ const VERDICT_LABEL: Record<Verdict, string> = {
   scam: "Scam pattern",
 };
 
+const VERDICT_HINT: Record<Verdict, string> = {
+  safe: "No strong scam signals in the seeded rules — still not a guarantee.",
+  suspicious: "Proceed only if you fully trust the source. Prefer official stores.",
+  scam: "High-confidence scam / malware lure patterns. Do not engage.",
+};
+
 export function ResultCard({ result }: { result: CheckResult }) {
+  const [shareState, setShareState] = useState<"idle" | "copied" | "error">("idle");
+  const stores = getOfficialStores().slice(0, 3);
+  const showStoreCtas = result.verdict !== "safe" || !result.isOfficialStore;
+
+  useEffect(() => {
+    setShareState("idle");
+  }, [result.normalizedUrl, result.checkedAt]);
+
+  async function shareResult() {
+    const origin = typeof window !== "undefined" ? window.location.origin : "";
+    const shareUrl = buildShareUrl(origin, result.url);
+    const title = `Safe Link Check — ${VERDICT_LABEL[result.verdict]}`;
+    const text = `${VERDICT_LABEL[result.verdict]} (risk ${result.score}/100) for ${result.host}`;
+
+    try {
+      if (typeof navigator !== "undefined" && navigator.share) {
+        await navigator.share({ title, text, url: shareUrl });
+        setShareState("copied");
+        return;
+      }
+      await navigator.clipboard.writeText(shareUrl);
+      setShareState("copied");
+    } catch {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        setShareState("copied");
+      } catch {
+        setShareState("error");
+      }
+    }
+  }
+
   return (
     <article className={`result-card verdict-${result.verdict}`} aria-live="polite">
       <header className="result-header">
-        <p className="verdict-pill">{VERDICT_LABEL[result.verdict]}</p>
-        <p className="risk-score">
-          Risk score <strong>{result.score}</strong>/100
-        </p>
+        <div>
+          <p className="verdict-pill">{VERDICT_LABEL[result.verdict]}</p>
+          <p className="verdict-hint muted">{VERDICT_HINT[result.verdict]}</p>
+        </div>
+        <div className="risk-block" aria-label={`Risk score ${result.score} out of 100`}>
+          <p className="risk-score">
+            Risk score <strong>{result.score}</strong>/100
+          </p>
+          <div className="risk-meter" role="presentation">
+            <span className="risk-meter-fill" style={{ width: `${result.score}%` }} />
+          </div>
+        </div>
       </header>
 
       <p className="result-summary">{result.summary}</p>
@@ -26,6 +77,13 @@ export function ResultCard({ result }: { result: CheckResult }) {
         <div>
           <dt>Normalized</dt>
           <dd className="mono wrap">{result.normalizedUrl}</dd>
+        </div>
+        <div>
+          <dt>Signals</dt>
+          <dd>
+            {result.hits.length} matched ·{" "}
+            {result.isOfficialStore ? "official allowlist" : "rules + heuristics"}
+          </dd>
         </div>
       </dl>
 
@@ -41,9 +99,52 @@ export function ResultCard({ result }: { result: CheckResult }) {
         </ul>
       ) : null}
 
+      <section className="next-steps" aria-label="What to do next">
+        <h3>What to do next</h3>
+        <ol>
+          {result.nextSteps.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      </section>
+
+      {showStoreCtas ? (
+        <section className="result-stores" aria-label="Official store shortcuts">
+          <h3>{result.verdict === "scam" ? "Skip the lure — buy official" : "Safer path: official stores"}</h3>
+          <div className="store-cta-row">
+            {stores.map((store) => (
+              <a
+                key={store.url}
+                className="store-cta"
+                href={store.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="store-cta-name">{store.name}</span>
+                <span className="store-cta-note">{store.note}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <div className="result-actions">
+        <button type="button" className="cta ghost" onClick={shareResult}>
+          {shareState === "copied" ? "Link copied" : "Share this result"}
+        </button>
+        {shareState === "error" ? (
+          <span className="muted" role="status">
+            Could not copy — copy the address bar instead.
+          </span>
+        ) : (
+          <span className="muted">Creates a permalink with <code>?u=</code> so others see the same check.</span>
+        )}
+      </div>
+
       <p className="result-foot muted">
         Checked {new Date(result.checkedAt).toLocaleString()} · educational heuristics only —
-        not antivirus or a malware scanner.
+        not antivirus, not a live malware scan, and not affiliated with Rockstar, Take-Two,
+        PlayStation, or Xbox.
       </p>
     </article>
   );
