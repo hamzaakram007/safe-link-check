@@ -1,0 +1,312 @@
+{
+  "version": 1,
+  "updated": "2026-11-18",
+  "officialStores": [
+    {
+      "name": "PlayStation Store",
+      "url": "https://store.playstation.com/",
+      "note": "Official PS5 storefront"
+    },
+    {
+      "name": "Xbox / Microsoft Store",
+      "url": "https://www.xbox.com/games/store",
+      "note": "Official Xbox Series X|S storefront"
+    },
+    {
+      "name": "Rockstar Games Launcher / Store",
+      "url": "https://store.rockstargames.com/",
+      "note": "Publisher store — console editions when listed"
+    }
+  ],
+  "allowlistHosts": [
+    "store.playstation.com",
+    "www.playstation.com",
+    "playstation.com",
+    "www.xbox.com",
+    "xbox.com",
+    "www.microsoft.com",
+    "microsoft.com",
+    "store.rockstargames.com",
+    "www.rockstargames.com",
+    "rockstargames.com"
+  ],
+  "blocklistHosts": [
+    {
+      "host": "gta6-pc-download.example",
+      "reason": "Known fake PC download lure domain pattern",
+      "severity": "scam"
+    },
+    {
+      "host": "freegta6full.example",
+      "reason": "Free full-game download scam pattern",
+      "severity": "scam"
+    },
+    {
+      "host": "rockstar-support-verify.example",
+      "reason": "Phishing brand-impersonation support domain",
+      "severity": "scam"
+    }
+  ],
+  "hostKeywords": [
+    {
+      "id": "hk-gta6-pc",
+      "pattern": "gta6-pc",
+      "reason": "Host implies PC GTA 6 download — no PC launch announced",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-gta-vi-pc",
+      "pattern": "gta-vi-pc",
+      "reason": "Host markets PC GTA VI download",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-crack",
+      "pattern": "crack",
+      "reason": "Crack / pirate host naming",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-repack",
+      "pattern": "repack",
+      "reason": "Game-repack download host pattern",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-torrent-gta",
+      "pattern": "torrent",
+      "reason": "Torrent host often used for malware-laced game packs",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-free-gta",
+      "pattern": "free-gta",
+      "reason": "Free-game lure in hostname",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-ultimate-edition-free",
+      "pattern": "ultimate-edition",
+      "reason": "Free Ultimate Edition lure domains",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-apk",
+      "pattern": "apk",
+      "reason": "APK / sideload lure (not a console store)",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-exe-download",
+      "pattern": "exe-download",
+      "reason": "Direct EXE download host pattern",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-rockstar-login",
+      "pattern": "rockstar-login",
+      "reason": "Fake Rockstar login host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-steam-gta6",
+      "pattern": "steam-gta6",
+      "reason": "Fake Steam GTA 6 listing host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-keygen",
+      "pattern": "keygen",
+      "reason": "Keygen malware distribution pattern",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-warez",
+      "pattern": "warez",
+      "reason": "Warez / pirate distribution host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-mega-gta",
+      "pattern": "mega-gta",
+      "reason": "File-host mega pack lure for fake installs",
+      "severity": "suspicious"
+    }
+  ],
+  "pathKeywords": [
+    {
+      "id": "pk-pc-download",
+      "pattern": "pc-download",
+      "reason": "Path claims PC download — console-only at launch",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-full-game-free",
+      "pattern": "full-game-free",
+      "reason": "Free full-game path lure",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-crack",
+      "pattern": "crack",
+      "reason": "Crack path segment",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-setup-exe",
+      "pattern": "setup.exe",
+      "reason": "Direct installer executable in URL",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-gta6.exe",
+      "pattern": "gta6.exe",
+      "reason": "Fake game executable filename",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-gta-vi.exe",
+      "pattern": "gta-vi.exe",
+      "reason": "Fake game executable filename",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-torrent",
+      "pattern": ".torrent",
+      "reason": "Torrent file download path",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-unlock-crypto",
+      "pattern": "unlock",
+      "reason": "Unlock / claim path often paired with crypto scams",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-airdrop",
+      "pattern": "airdrop",
+      "reason": "Crypto airdrop claim lure",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-wallet-connect",
+      "pattern": "wallet-connect",
+      "reason": "Wallet-connect phishing pattern",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-verify-account",
+      "pattern": "verify-account",
+      "reason": "Account verification phishing path",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-free-ultimate",
+      "pattern": "free-ultimate",
+      "reason": "Free Ultimate Edition lure",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-preorder-bonus-claim",
+      "pattern": "claim-bonus",
+      "reason": "Fake preorder bonus claim path",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-installer",
+      "pattern": "/installer",
+      "reason": "Installer download path outside official stores",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-zip-download",
+      "pattern": ".zip",
+      "reason": "ZIP archive download — common malware dropper",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-rar-download",
+      "pattern": ".rar",
+      "reason": "RAR archive download — common malware dropper",
+      "severity": "suspicious"
+    }
+  ],
+  "queryKeywords": [
+    {
+      "id": "qk-download-now",
+      "pattern": "download=now",
+      "reason": "Aggressive download CTA query",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-free-key",
+      "pattern": "free_key",
+      "reason": "Free license key lure",
+      "severity": "scam"
+    },
+    {
+      "id": "qk-ref-crypto",
+      "pattern": "wallet=",
+      "reason": "Wallet parameter in query — crypto phishing risk",
+      "severity": "suspicious"
+    }
+  ],
+  "heuristics": [
+    {
+      "id": "h-no-https",
+      "type": "no_https",
+      "reason": "Link is not HTTPS — higher risk for phishing/malware",
+      "severity": "suspicious"
+    },
+    {
+      "id": "h-ip-host",
+      "type": "ip_host",
+      "reason": "Raw IP address as host — unusual for legitimate stores",
+      "severity": "suspicious"
+    },
+    {
+      "id": "h-punycode",
+      "type": "punycode",
+      "reason": "Internationalized (xn--) host can hide lookalike brands",
+      "severity": "suspicious"
+    },
+    {
+      "id": "h-long-subdomains",
+      "type": "many_subdomains",
+      "reason": "Many subdomain labels — common in phishing kits",
+      "severity": "suspicious"
+    },
+    {
+      "id": "h-pc-claim-copy",
+      "type": "pc_version_claim",
+      "reason": "URL text claims PC GTA / Grand Theft Auto VI download — console-only at launch (Nov 2026)",
+      "severity": "scam"
+    },
+    {
+      "id": "h-shortener",
+      "type": "url_shortener",
+      "reason": "URL shortener hides the real destination",
+      "severity": "suspicious"
+    }
+  ],
+  "shortenerHosts": [
+    "bit.ly",
+    "tinyurl.com",
+    "t.co",
+    "goo.gl",
+    "ow.ly",
+    "is.gd",
+    "buff.ly",
+    "rebrand.ly",
+    "cutt.ly",
+    "shorturl.at"
+  ],
+  "pcClaimRegexes": [
+    "gta\\s*6.*pc",
+    "gta\\s*vi.*pc",
+    "pc.*gta\\s*6",
+    "pc.*gta\\s*vi",
+    "grand\\s*theft\\s*auto.*pc.*download",
+    "download.*gta.*pc"
+  ]
+}
