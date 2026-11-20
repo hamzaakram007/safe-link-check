@@ -75,7 +75,7 @@ function summarize(verdict: Verdict, isOfficial: boolean, hits: PatternHit[]): s
   if (verdict === "suspicious") {
     return `Suspicious signals found (${hits.length}). Treat with caution: avoid installers, archives, and “free unlock” pages. Prefer official console stores.`;
   }
-  return "No seeded scam patterns matched. That is not a guarantee of safety — this tool is educational heuristics, not antivirus.";
+  return "No seeded scam patterns matched. That is not a guarantee of safety — this tool uses educational heuristics, not antivirus.";
 }
 
 function nextStepsFor(verdict: Verdict, isOfficial: boolean): string[] {
@@ -105,7 +105,7 @@ function nextStepsFor(verdict: Verdict, isOfficial: boolean): string[] {
   return [
     "No seeded patterns matched — still avoid unexpected installers and credential forms.",
     "Prefer official PlayStation, Xbox, or Rockstar storefronts for purchases.",
-    "This check is educational heuristics only, not a malware scan.",
+    "This check uses educational heuristics only — not a malware scan.",
   ];
 }
 

@@ -7,9 +7,9 @@ export function OfficialStores() {
     <section className="section stores" id="official-stores">
       <h2>Buy only from official stores</h2>
       <p className="lede">
-        Console launch is PlayStation and Xbox only. Skip random “PC installer” pages,
-        torrents, gift-card DMs, and “free Ultimate Edition” claims. These are the real
-        storefronts — open them yourself; don’t trust links from strangers.
+        Real purchases happen on PlayStation Store, Xbox / Microsoft Store, or the publisher’s
+        store when listed — not on random “PC installer” pages, torrents, gift-card DMs, or free
+        Ultimate Edition claims. Open these storefronts yourself; do not trust links from strangers.
       </p>
       <ul className="store-list">
         {stores.map((store) => (

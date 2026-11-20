@@ -1,11 +1,11 @@
 {
-  "version": 2,
-  "updated": "2026-11-18",
+  "version": 3,
+  "updated": "2026-11-20",
   "officialStores": [
     {
       "name": "PlayStation Store",
       "url": "https://store.playstation.com/",
-      "note": "Official PS5 storefront — buy console editions here"
+      "note": "Official PS5 storefront \u2014 buy console editions here"
     },
     {
       "name": "Xbox / Microsoft Store",
@@ -15,7 +15,7 @@
     {
       "name": "Rockstar Games Store",
       "url": "https://store.rockstargames.com/",
-      "note": "Publisher store — console editions when listed"
+      "note": "Publisher store \u2014 console editions when listed"
     },
     {
       "name": "PlayStation (site)",
@@ -77,13 +77,43 @@
       "host": "xbox-gift-redeem.example",
       "reason": "Fake Xbox gift redeem phishing pattern",
       "severity": "scam"
+    },
+    {
+      "host": "gta6-preload.example",
+      "reason": "Fake preload / early download domain pattern",
+      "severity": "scam"
+    },
+    {
+      "host": "socialclub-update.example",
+      "reason": "Fake Social Club update phishing domain",
+      "severity": "scam"
+    },
+    {
+      "host": "rgl-launcher-fix.example",
+      "reason": "Fake Rockstar launcher update domain",
+      "severity": "scam"
+    },
+    {
+      "host": "free-ultimate-gta6.example",
+      "reason": "Free Ultimate Edition claim domain pattern",
+      "severity": "scam"
+    },
+    {
+      "host": "gta6-fitgirl.example",
+      "reason": "Repack / pirate mirror naming for malware packs",
+      "severity": "scam"
+    },
+    {
+      "host": "discord-nitro-gta.example",
+      "reason": "Discord Nitro + game gift phishing pattern",
+      "severity": "scam"
     }
   ],
   "hostKeywords": [
     {
       "id": "hk-gta6-pc",
       "pattern": "gta6-pc",
-      "reason": "Host implies PC GTA 6 download — no PC launch announced",
+      "reason": "Host implies PC GTA 6 download \u2014 no PC launch announced",
       "severity": "scam"
     },
     {
@@ -221,7 +251,7 @@
     {
       "id": "hk-giveaway-gta",
       "pattern": "giveaway",
-      "reason": "Giveaway lure host — often phishing",
+      "reason": "Giveaway lure host \u2014 often phishing",
       "severity": "suspicious"
     },
     {
@@ -239,33 +269,291 @@
     {
       "id": "hk-mod-menu",
       "pattern": "modmenu",
-      "reason": "Mod-menu / cheat download host — malware risk",
+      "reason": "Mod-menu / cheat download host \u2014 malware risk",
       "severity": "scam"
     },
     {
       "id": "hk-mod-menu-hyphen",
       "pattern": "mod-menu",
-      "reason": "Mod-menu / cheat download host — malware risk",
+      "reason": "Mod-menu / cheat download host \u2014 malware risk",
       "severity": "scam"
     },
     {
       "id": "hk-softonic-style",
       "pattern": "download-gta",
-      "reason": "Third-party “download GTA” host pattern",
+      "reason": "Third-party \u201cdownload GTA\u201d host pattern",
       "severity": "scam"
     },
     {
       "id": "hk-iso-download",
       "pattern": "iso-download",
-      "reason": "ISO / disc image download host — not how consoles buy games",
+      "reason": "ISO / disc image download host \u2014 not how consoles buy games",
       "severity": "scam"
+    },
+    {
+      "id": "hk-fitgirl",
+      "pattern": "fitgirl",
+      "reason": "Repack mirror naming \u2014 high malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-skidrow",
+      "pattern": "skidrow",
+      "reason": "Crack group naming \u2014 malware distribution risk",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-codex",
+      "pattern": "codex-games",
+      "reason": "Crack release naming in hostname",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-offline-activator",
+      "pattern": "offline-activator",
+      "reason": "Offline activator / piracy tool host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-dlc-unlocker",
+      "pattern": "dlc-unlocker",
+      "reason": "DLC unlocker malware host pattern",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-trainer",
+      "pattern": "trainer-download",
+      "reason": "Game trainer download host \u2014 malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-save-editor",
+      "pattern": "save-editor",
+      "reason": "Save-editor download host \u2014 malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-preload",
+      "pattern": "gta6-preload",
+      "reason": "Fake preload download host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-pre-load",
+      "pattern": "pre-load",
+      "reason": "Fake pre-load download host",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-dayone",
+      "pattern": "day-one-unlock",
+      "reason": "Fake day-one unlock download host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-leak-build",
+      "pattern": "leak-build",
+      "reason": "Leaked-build download lure host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-source-leak",
+      "pattern": "source-leak",
+      "reason": "Source/build leak download lure",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-trailer-full",
+      "pattern": "full-game-leak",
+      "reason": "Full-game leak download lure",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-rgl-update",
+      "pattern": "rgl-update",
+      "reason": "Fake Rockstar launcher update host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-socialclub-update",
+      "pattern": "socialclub-update",
+      "reason": "Fake Social Club update host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-launcher-update",
+      "pattern": "launcher-update",
+      "reason": "Fake launcher update host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-ps5-jailbreak",
+      "pattern": "ps5-jailbreak",
+      "reason": "Jailbreak + game pack lure host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-xbox-jailbreak",
+      "pattern": "xbox-jailbreak",
+      "reason": "Jailbreak + game pack lure host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-emulator-gta",
+      "pattern": "emulator-gta",
+      "reason": "Fake emulator + game download host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-cloud-gaming-free",
+      "pattern": "cloud-gaming-free",
+      "reason": "Fake free cloud-gaming download host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-geforce-gta",
+      "pattern": "geforce-gta",
+      "reason": "Fake GeForce Now / cloud GTA download host",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-mediafire-gta",
+      "pattern": "mediafire-gta",
+      "reason": "File-host mega pack lure naming",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-mega-nz-gta",
+      "pattern": "mega-nz-gta",
+      "reason": "File-host mega pack lure naming",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-telegram-gta",
+      "pattern": "telegram-gta",
+      "reason": "Telegram channel download lure host",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-discord-nitro",
+      "pattern": "discord-nitro",
+      "reason": "Discord Nitro gift phishing host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-nitro-free",
+      "pattern": "free-nitro",
+      "reason": "Free Nitro gift phishing host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-survey-unlock",
+      "pattern": "survey-unlock",
+      "reason": "Survey-to-unlock download lure host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-captcha-verify",
+      "pattern": "captcha-verify",
+      "reason": "Fake captcha / verify gate before malware",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-gog-games",
+      "pattern": "gog-games",
+      "reason": "Unofficial GOG-style free games mirror naming",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-steamunlocked",
+      "pattern": "steamunlocked",
+      "reason": "Pirate \u201cSteam unlocked\u201d mirror naming",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-steam-unlocked",
+      "pattern": "steam-unlocked",
+      "reason": "Pirate \u201cSteam unlocked\u201d mirror naming",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-igg-games",
+      "pattern": "igg-games",
+      "reason": "Pirate games portal naming \u2014 malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-oceanofgames",
+      "pattern": "oceanofgames",
+      "reason": "Pirate games portal naming \u2014 malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-softonic-gta",
+      "pattern": "softonic",
+      "reason": "Third-party download portal often bundles adware",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-getintopc",
+      "pattern": "getintopc",
+      "reason": "Pirate software portal naming \u2014 malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-filecr",
+      "pattern": "filecr",
+      "reason": "Cracked software portal naming \u2014 malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-multiplayer-early",
+      "pattern": "gta6-multiplayer",
+      "reason": "Fake early multiplayer client download host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-online-beta",
+      "pattern": "online-beta-download",
+      "reason": "Fake online beta client download host",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-rpcs3-gta",
+      "pattern": "rpcs3",
+      "reason": "Emulator-related download host \u2014 verify carefully",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-mediafire",
+      "pattern": "mediafire",
+      "reason": "File-host download domain \u2014 often used for malware packs",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-mega-nz",
+      "pattern": "mega.nz",
+      "reason": "Anonymous file-host share \u2014 common malware drop channel",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-discord-cdn",
+      "pattern": "discordapp",
+      "reason": "Discord file CDN \u2014 frequently abused for malware zips/exes",
+      "severity": "suspicious"
+    },
+    {
+      "id": "hk-discord-media",
+      "pattern": "discord.media",
+      "reason": "Discord media host \u2014 verify shared executables carefully",
+      "severity": "suspicious"
     }
   ],
   "pathKeywords": [
     {
       "id": "pk-pc-download",
       "pattern": "pc-download",
-      "reason": "Path claims PC download — console-only at launch",
+      "reason": "Path claims PC download \u2014 console-only at launch",
       "severity": "scam"
     },
     {
@@ -355,25 +643,25 @@
     {
       "id": "pk-zip-download",
       "pattern": ".zip",
-      "reason": "ZIP archive download — common malware dropper",
+      "reason": "ZIP archive download \u2014 common malware dropper",
       "severity": "suspicious"
     },
     {
       "id": "pk-rar-download",
       "pattern": ".rar",
-      "reason": "RAR archive download — common malware dropper",
+      "reason": "RAR archive download \u2014 common malware dropper",
       "severity": "suspicious"
     },
     {
       "id": "pk-7z-download",
       "pattern": ".7z",
-      "reason": "7z archive download — common malware dropper",
+      "reason": "7z archive download \u2014 common malware dropper",
       "severity": "suspicious"
     },
     {
       "id": "pk-scr",
       "pattern": ".scr",
-      "reason": "Windows screensaver executable — classic malware lure",
+      "reason": "Windows screensaver executable \u2014 classic malware lure",
       "severity": "scam"
     },
     {
@@ -391,7 +679,7 @@
     {
       "id": "pk-dmg",
       "pattern": ".dmg",
-      "reason": "Mac disk image download — not a console store path",
+      "reason": "Mac disk image download \u2014 not a console store path",
       "severity": "suspicious"
     },
     {
@@ -453,6 +741,186 @@
       "pattern": "get-installer",
       "reason": "Installer lure path",
       "severity": "scam"
+    },
+    {
+      "id": "pk-fitgirl",
+      "pattern": "fitgirl",
+      "reason": "Repack path naming \u2014 malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-skidrow",
+      "pattern": "skidrow",
+      "reason": "Crack path naming \u2014 malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-trainer",
+      "pattern": "trainer",
+      "reason": "Trainer download path \u2014 malware risk",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-dlc-unlocker",
+      "pattern": "dlc-unlocker",
+      "reason": "DLC unlocker path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-offline-activator",
+      "pattern": "offline-activator",
+      "reason": "Offline activator path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-launcher-update-exe",
+      "pattern": "launcher-update.exe",
+      "reason": "Fake launcher update executable",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-rgl-installer",
+      "pattern": "rgl-installer",
+      "reason": "Fake Rockstar launcher installer path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-social-club-update",
+      "pattern": "social-club-update",
+      "reason": "Fake Social Club update path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-setup-zip",
+      "pattern": "setup.zip",
+      "reason": "Zipped installer \u2014 common malware dropper",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-full-iso",
+      "pattern": "full.iso",
+      "reason": "Fake full-game ISO download path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-preload",
+      "pattern": "preload",
+      "reason": "Fake preload download path outside official stores",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-day-one",
+      "pattern": "day-one",
+      "reason": "Day-one unlock / leak path lure",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-build-leak",
+      "pattern": "build-leak",
+      "reason": "Leaked build download path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-crackfix",
+      "pattern": "crackfix",
+      "reason": "Crackfix / instructions path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-serial-key",
+      "pattern": "serial-key",
+      "reason": "Serial / key claim path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-keygen",
+      "pattern": "keygen",
+      "reason": "Keygen download path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-password-rar",
+      "pattern": "password=",
+      "reason": "Archive password parameter \u2014 often paired with malware packs",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-attachment-exe",
+      "pattern": "/attachments/",
+      "reason": "Attachment download path \u2014 common for shared malware zips",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-survey",
+      "pattern": "complete-survey",
+      "reason": "Survey-gate unlock path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-human-verify",
+      "pattern": "human-verify",
+      "reason": "Fake human-verification gate before download",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-claim-nitro",
+      "pattern": "claim-nitro",
+      "reason": "Discord Nitro claim phishing path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-free-ps-plus",
+      "pattern": "free-ps-plus",
+      "reason": "Fake PS Plus giveaway path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-free-gamepass",
+      "pattern": "free-game-pass",
+      "reason": "Fake Game Pass giveaway path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-gift-card-gen",
+      "pattern": "gift-card-generator",
+      "reason": "Gift-card generator scam path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-update-required",
+      "pattern": "update-required",
+      "reason": "Fake \u201cupdate required\u201d account phishing path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-suspend-warning",
+      "pattern": "account-suspended",
+      "reason": "Fake account-suspension phishing path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-confirm-ownership",
+      "pattern": "confirm-ownership",
+      "reason": "Fake ownership confirmation phishing path",
+      "severity": "suspicious"
+    },
+    {
+      "id": "pk-js-payload",
+      "pattern": ".js.exe",
+      "reason": "Double-extension style JS/EXE lure in path",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-apk-gta",
+      "pattern": "gta6.apk",
+      "reason": "Fake mobile APK for a console title",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-xapk",
+      "pattern": ".xapk",
+      "reason": "Sideload package download \u2014 not an official store path",
+      "severity": "suspicious"
     }
   ],
   "queryKeywords": [
@@ -471,43 +939,43 @@
     {
       "id": "qk-ref-crypto",
       "pattern": "wallet=",
-      "reason": "Wallet parameter in query — crypto phishing risk",
+      "reason": "Wallet parameter in query \u2014 crypto phishing risk",
       "severity": "suspicious"
     },
     {
       "id": "qk-seed",
       "pattern": "seed=",
-      "reason": "Seed parameter — wallet theft risk",
+      "reason": "Seed parameter \u2014 wallet theft risk",
       "severity": "scam"
     },
     {
       "id": "qk-private-key",
       "pattern": "private_key",
-      "reason": "Private key in query — credential theft",
+      "reason": "Private key in query \u2014 credential theft",
       "severity": "scam"
     },
     {
       "id": "qk-exe",
       "pattern": "file=setup",
-      "reason": "Setup file parameter — installer lure",
+      "reason": "Setup file parameter \u2014 installer lure",
       "severity": "suspicious"
     },
     {
       "id": "qk-redir",
       "pattern": "redirect=",
-      "reason": "Open redirect parameter — destination may be hidden",
+      "reason": "Open redirect parameter \u2014 destination may be hidden",
       "severity": "suspicious"
     },
     {
       "id": "qk-url-param",
       "pattern": "url=http",
-      "reason": "Nested URL parameter — often used to mask phishing",
+      "reason": "Nested URL parameter \u2014 often used to mask phishing",
       "severity": "suspicious"
     },
     {
       "id": "qk-claim",
       "pattern": "claim=1",
-      "reason": "Claim CTA query — common in giveaway scams",
+      "reason": "Claim CTA query \u2014 common in giveaway scams",
       "severity": "suspicious"
     },
     {
@@ -515,19 +983,61 @@
       "pattern": "gift_token",
       "reason": "Gift token claim query",
       "severity": "suspicious"
+    },
+    {
+      "id": "qk-file-exe",
+      "pattern": "file=.exe",
+      "reason": "Executable filename in query \u2014 installer lure",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-dl",
+      "pattern": "dl=1",
+      "reason": "Forced download query flag",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-auto-download",
+      "pattern": "autodownload",
+      "reason": "Auto-download query lure",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-ref-discord",
+      "pattern": "ref=discord",
+      "reason": "Discord-sourced download referral \u2014 verify destination",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-utm-giveaway",
+      "pattern": "utm_campaign=giveaway",
+      "reason": "Giveaway campaign tracking \u2014 often phishing funnels",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-nitro",
+      "pattern": "nitro=",
+      "reason": "Nitro / gift claim query",
+      "severity": "suspicious"
+    },
+    {
+      "id": "qk-installer-id",
+      "pattern": "installer_id",
+      "reason": "Installer ID query \u2014 third-party installer funnel",
+      "severity": "suspicious"
     }
   ],
   "heuristics": [
     {
       "id": "h-no-https",
       "type": "no_https",
-      "reason": "Link is not HTTPS — higher risk for phishing/malware",
+      "reason": "Link is not HTTPS \u2014 higher risk for phishing/malware",
       "severity": "suspicious"
     },
     {
       "id": "h-ip-host",
       "type": "ip_host",
-      "reason": "Raw IP address as host — unusual for legitimate stores",
+      "reason": "Raw IP address as host \u2014 unusual for legitimate stores",
       "severity": "suspicious"
     },
     {
@@ -539,13 +1049,13 @@
     {
       "id": "h-long-subdomains",
       "type": "many_subdomains",
-      "reason": "Many subdomain labels — common in phishing kits",
+      "reason": "Many subdomain labels \u2014 common in phishing kits",
       "severity": "suspicious"
     },
     {
       "id": "h-pc-claim-copy",
       "type": "pc_version_claim",
-      "reason": "URL text claims PC GTA / Grand Theft Auto VI download — console-only at launch (Nov 2026)",
+      "reason": "URL text claims PC GTA / Grand Theft Auto VI download \u2014 console-only at launch (Nov 2026)",
       "severity": "scam"
     },
     {
@@ -563,7 +1073,7 @@
     {
       "id": "h-credentials-in-url",
       "type": "credentials_in_url",
-      "reason": "Username/password embedded in the URL — classic phishing pattern",
+      "reason": "Username/password embedded in the URL \u2014 classic phishing pattern",
       "severity": "scam"
     },
     {
@@ -575,19 +1085,19 @@
     {
       "id": "h-double-extension",
       "type": "double_extension",
-      "reason": "Filename uses a double extension (e.g. .pdf.exe) — common malware disguise",
+      "reason": "Filename uses a double extension (e.g. .pdf.exe) \u2014 common malware disguise",
       "severity": "scam"
     },
     {
       "id": "h-long-query",
       "type": "long_query",
-      "reason": "Very long query string — often used to hide tracking or phishing payloads",
+      "reason": "Very long query string \u2014 often used to hide tracking or phishing payloads",
       "severity": "suspicious"
     },
     {
       "id": "h-nonstandard-port",
       "type": "nonstandard_port",
-      "reason": "Non-standard web port — unusual for real storefronts",
+      "reason": "Non-standard web port \u2014 unusual for real storefronts",
       "severity": "suspicious"
     }
   ],
@@ -611,7 +1121,14 @@
     "s.id",
     "v.gd",
     "soo.gd",
-    "clck.ru"
+    "clck.ru",
+    "trib.al",
+    "qr.ae",
+    "adf.ly",
+    "bc.vc",
+    "shorte.st",
+    "tiny.one",
+    "dub.sh"
   ],
   "suspiciousTlds": [
     "xyz",
@@ -633,7 +1150,16 @@
     "cfd",
     "sbs",
     "cyou",
-    "monster"
+    "monster",
+    "shop",
+    "support",
+    "help",
+    "download",
+    "quest",
+    "bond",
+    "hair",
+    "mom",
+    "vip"
   ],
   "brandLookalikeTokens": [
     "rockstar",
@@ -651,7 +1177,15 @@
     "psn",
     "gta6",
     "gtavi",
-    "grandtheftauto"
+    "grandtheftauto",
+    "rockstargame",
+    "rockstar-games",
+    "epicgamesstore",
+    "xboxlive",
+    "microsoft-store",
+    "psnstore",
+    "social-club",
+    "rockstarlauncher"
   ],
   "pcClaimRegexes": [
     "gta\\s*6.*pc",
@@ -667,6 +1201,19 @@
     "gta\\s*6.*setup",
     "gta\\s*vi.*setup",
     "steam.*gta\\s*6.*key",
-    "free.*gta\\s*6.*download"
+    "free.*gta\\s*6.*download",
+    "gta\\s*6.*preload",
+    "gta\\s*vi.*preload",
+    "download.*gta\\s*6.*iso",
+    "gta\\s*6.*repack",
+    "gta\\s*vi.*repack",
+    "gta\\s*6.*crack",
+    "gta\\s*vi.*crack",
+    "gta\\s*6.*torrent",
+    "free.*ultimate.*gta",
+    "gta\\s*6.*fitgirl",
+    "gta\\s*6.*steamunlocked",
+    "rockstar.*launcher.*update.*gta",
+    "social\\s*club.*update.*required"
   ]
 }

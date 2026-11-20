@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, DM_Sans, IBM_Plex_Mono } from "next/font/google";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
-
-const SITE_URL = "https://safe-link-check-jade.vercel.app";
 
 const display = Fraunces({
   variable: "--font-display",
@@ -25,23 +24,24 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Safe Link Check — fake download & scam URL checker",
-    template: "%s · Safe Link Check",
+    default: `${SITE_NAME} — fake download & scam URL checker`,
+    template: `%s · ${SITE_NAME}`,
   },
   description:
-    "Paste a URL and get a safe / suspicious / scam-pattern check. Educational heuristics for fake PC game download lures, phishing unlock pages, and launch-week scams. Not antivirus. Unaffiliated with Rockstar.",
-  applicationName: "Safe Link Check",
+    "Paste a URL and get a safe / suspicious / scam-pattern check. Educational heuristics for fake PC game download lures, phishing unlock pages, and launch-week scams. Not antivirus. A NeonGulf tool — unaffiliated with Rockstar.",
+  applicationName: SITE_NAME,
   keywords: [
     "scam link checker",
     "fake download checker",
-    "GTA 6 scam",
+    "game download scam",
     "PC download scam",
     "phishing URL check",
     "safe link check",
     "console launch scam",
+    "NeonGulf",
   ],
-  authors: [{ name: "Safe Link Check" }],
-  creator: "Safe Link Check",
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
   robots: {
     index: true,
     follow: true,
@@ -53,15 +53,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "Safe Link Check",
-    title: "Safe Link Check — spot fake download & scam links",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — spot fake download & scam links`,
     description:
-      "Educational URL pattern checker for fake PC installers, phishing unlock pages, and launch-week lures. Not antivirus. Buy only from official stores.",
+      "URL pattern checker for fake PC installers, phishing unlock pages, and launch-week lures. Not antivirus. Buy only from official stores.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Safe Link Check — fake download & scam URL checker",
+    title: `${SITE_NAME} — fake download & scam URL checker`,
     description:
       "Paste a link. Get safe / suspicious / scam-pattern signals. Educational heuristics — not antivirus.",
   },
@@ -79,7 +79,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "Safe Link Check",
+    name: SITE_NAME,
     url: SITE_URL,
     applicationCategory: "SecurityApplication",
     operatingSystem: "Any",

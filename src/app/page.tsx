@@ -1,6 +1,9 @@
 import { Disclaimer } from "@/components/Disclaimer";
-import { DiscordStub } from "@/components/DiscordStub";
+import { HowItWorks } from "@/components/HowItWorks";
 import { OfficialStores } from "@/components/OfficialStores";
+import { ScamPatterns } from "@/components/ScamPatterns";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
 import { TrustBanner } from "@/components/TrustBanner";
 import { UrlCheckerBoundary } from "@/components/UrlCheckerBoundary";
 import { getPatternsMeta } from "@/lib/check-url";
@@ -10,21 +13,17 @@ export default function Home() {
 
   return (
     <main className="shell">
-      <header className="brand-bar">
-        <p className="brand">
-          Safe <span>Link</span> Check
-        </p>
-        <p className="tag">Educational MVP</p>
-      </header>
+      <SiteHeader />
 
       <TrustBanner />
 
       <section className="hero">
-        <h1>Paste a link. Spot fake download &amp; scam patterns fast.</h1>
+        <h1>Check a link before you download or sign in.</h1>
         <p>
-          Built for launch-week noise: phishing pages, “free Ultimate Edition” traps, and
-          fake PC installers when the real game is console-only. Heuristics — not a scanner.
-          Results are shareable via a <code>?u=</code> permalink.
+          Paste a URL to see whether it matches known fake-download and phishing patterns — PC
+          installer lures, free “Ultimate Edition” claims, brand lookalikes, and similar launch-week
+          traps. Heuristics only: this is not antivirus, and the destination is never opened from
+          here. Results can be shared with a <code>?u=</code> permalink.
         </p>
       </section>
 
@@ -32,21 +31,16 @@ export default function Home() {
         <UrlCheckerBoundary />
       </section>
 
+      <HowItWorks />
+      <ScamPatterns />
       <OfficialStores />
-      <DiscordStub />
       <Disclaimer />
 
       <p className="meta-line">
-        Seeded rules v{meta.version} · {meta.patternCount} patterns · updated {meta.updated}
+        Rules v{meta.version} · {meta.patternCount} patterns · updated {meta.updated}
       </p>
 
-      <footer className="site-footer">
-        <span>
-          Independent tool — unaffiliated with Rockstar, Take-Two, PlayStation, or Xbox. Not
-          antivirus.
-        </span>
-        <a href="https://github.com/hamzaakram007/safe-link-check">Source on GitHub</a>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

@@ -30,7 +30,7 @@ export default function OpenGraphImage() {
             color: "#8aa8a6",
           }}
         >
-          Educational heuristics · not antivirus
+          NeonGulf · pattern checks · not antivirus
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div
@@ -67,7 +67,7 @@ export default function OpenGraphImage() {
           }}
         >
           <span>Buy only from official stores</span>
-          <span style={{ color: "#8aa8a6" }}>safe-link-check-jade.vercel.app</span>
+          <span style={{ color: "#8aa8a6" }}>check.neongulf.com</span>
         </div>
       </div>
     ),

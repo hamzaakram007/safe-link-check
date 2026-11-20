@@ -4,26 +4,28 @@ export function Disclaimer() {
       <h2>Important disclaimer</h2>
       <ul>
         <li>
-          Safe Link Check is an <strong>educational MVP</strong>. It uses a seeded blocklist and
-          simple heuristics — it does <strong>not</strong> download files, visit the destination,
-          sandbox malware, or replace antivirus / browser security.
+          Safe Link Check is an <strong>educational URL pattern checker</strong>. It uses a seeded
+          blocklist and heuristics — it does <strong>not</strong> download files, visit the
+          destination, sandbox malware, or replace antivirus or browser security.
         </li>
         <li>
           Verdicts can be wrong (false positives and false negatives). A “safe” result is{" "}
-          <strong>not</strong> a guarantee. A “scam” result is a pattern match, not a court finding.
+          <strong>not</strong> a guarantee. A “scam” result is a pattern match, not a legal finding.
         </li>
         <li>
-          Never open shady installers, archives, cracks, keygens, or “free Ultimate Edition”
-          pages. Console launch is PlayStation and Xbox — treat “PC download now” claims as hostile.
+          Never open unexpected installers, archives, cracks, keygens, trainers, or “free Ultimate
+          Edition” pages. When a title is console-only at launch, treat “PC download now” claims as
+          hostile.
         </li>
         <li>
           This product is <strong>independent and unaffiliated</strong> with Rockstar Games,
-          Take-Two Interactive, PlayStation, Sony, Xbox, or Microsoft. No Rockstar trademarks or
-          assets are used.
+          Take-Two Interactive, PlayStation, Sony, Xbox, or Microsoft. No publisher trademarks or
+          assets are used as product branding.
         </li>
         <li>
           You are responsible for how you use these signals. Use at your own risk. When in doubt,
-          buy only from official storefronts linked on this page.
+          buy only from the official storefronts linked on this site — and type the address yourself
+          when you can.
         </li>
       </ul>
     </aside>

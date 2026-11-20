@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { checkUrl } from "@/lib/check-url";
 import { buildShareUrl, readSharedUrlParam } from "@/lib/share";
+import { SITE_URL } from "@/lib/site";
 import type { CheckResult } from "@/lib/types";
 import { ResultCard } from "./ResultCard";
 
@@ -28,7 +29,7 @@ export function UrlChecker() {
 
   function syncShareParam(raw: string) {
     const origin = typeof window !== "undefined" ? window.location.origin : "";
-    const next = buildShareUrl(origin || "https://safe-link-check-jade.vercel.app", raw);
+    const next = buildShareUrl(origin || SITE_URL, raw);
     const relative = `${pathname}?${new URL(next).searchParams.toString()}`;
     router.replace(relative, { scroll: false });
   }
@@ -79,7 +80,7 @@ export function UrlChecker() {
             type="text"
             inputMode="url"
             autoComplete="url"
-            placeholder="Paste a link — e.g. a “free PC download” someone sent you"
+            placeholder="Paste a full URL — including links from DMs, ads, or “download” posts"
             value={value}
             onChange={(e) => setValue(e.target.value)}
             className="url-input"
@@ -91,7 +92,7 @@ export function UrlChecker() {
       </form>
 
       <div className="example-row">
-        <span className="muted">Try:</span>
+        <span className="muted">Examples:</span>
         {EXAMPLES.map((ex) => (
           <button
             key={ex}

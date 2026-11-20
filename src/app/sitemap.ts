@@ -1,14 +1,26 @@
 import type { MetadataRoute } from "next";
-
-const SITE_URL = "https://safe-link-check-jade.vercel.app";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date("2026-11-20");
   return [
     {
       url: SITE_URL,
-      lastModified: new Date("2026-11-18"),
+      lastModified,
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${SITE_URL}/about`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${SITE_URL}/privacy`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
   ];
 }

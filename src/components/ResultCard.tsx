@@ -142,9 +142,9 @@ export function ResultCard({ result }: { result: CheckResult }) {
       </div>
 
       <p className="result-foot muted">
-        Checked {new Date(result.checkedAt).toLocaleString()} · educational heuristics only —
-        not antivirus, not a live malware scan, and not affiliated with Rockstar, Take-Two,
-        PlayStation, or Xbox.
+        Checked {new Date(result.checkedAt).toLocaleString()} · pattern heuristics only — not
+        antivirus, not a live malware scan, and not affiliated with Rockstar, Take-Two, PlayStation,
+        or Xbox.
       </p>
     </article>
   );

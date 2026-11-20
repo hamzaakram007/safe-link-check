@@ -89,11 +89,62 @@ a:hover {
 
 .brand-bar {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: 2.5rem;
   animation: rise 0.7s ease-out both;
+}
+
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.brand-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-link:hover {
+  color: inherit;
+}
+
+.brand-link span {
+  color: var(--neon);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  font-size: 0.88rem;
+  justify-content: flex-end;
+}
+
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--neon);
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+}
+
+.footer-nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  color: var(--neon);
 }
 
 .brand {
@@ -611,10 +662,117 @@ a:hover {
   font-size: 0.9em;
 }
 
-.discord-stub code {
+.how-list {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.how-list strong {
+  color: var(--fg);
+}
+
+.how-note {
+  margin: 1.1rem 0 0;
+  font-size: 0.88rem;
+  max-width: 60ch;
+}
+
+.pattern-grid {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 720px) {
+  .pattern-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.pattern-grid li {
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--line);
+  background: rgba(6, 22, 30, 0.55);
+}
+
+.pattern-grid h3 {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display), serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.pattern-grid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.legal-doc {
+  animation: rise 0.65s ease-out both;
+}
+
+.legal-kicker {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--neon-dim);
+  font-weight: 600;
+}
+
+.legal-doc h1 {
+  margin: 0 0 1rem;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.85rem, 4vw, 2.45rem);
+  line-height: 1.15;
+}
+
+.legal-doc h2 {
+  margin: 2rem 0 0.65rem;
+  font-family: var(--font-display), serif;
+  font-size: 1.25rem;
+}
+
+.legal-doc h3 {
+  margin: 1.25rem 0 0.4rem;
+  font-size: 1rem;
+}
+
+.legal-doc p,
+.legal-doc li {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+.legal-doc ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.legal-doc code {
   font-family: var(--font-mono), monospace;
   color: var(--neon);
   font-size: 0.9em;
+}
+
+.legal-updated {
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
 }
 
 .meta-line {
@@ -666,5 +824,9 @@ a:hover {
   .brand-bar {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
   }
 }

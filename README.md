@@ -1,10 +1,10 @@
 # Safe Link Check
 
-Paste a URL → get a **safe / suspicious / scam pattern** result card with next steps, shareable permalinks, and official-store CTAs.
+Paste a URL → get a **safe / suspicious / scam pattern** result with next steps, a shareable permalink, and official-store links.
 
-Educational heuristics for fake “PC GTA 6” download lures, phishing unlock pages, and similar launch-week scams. **Not antivirus.** Not affiliated with Rockstar Games, Take-Two, PlayStation, or Xbox.
+Educational heuristics for fake PC game-download lures, phishing unlock pages, and similar launch-week scams. **Not antivirus.** Not affiliated with Rockstar Games, Take-Two, PlayStation, or Xbox.
 
-**Live:** [https://safe-link-check-jade.vercel.app](https://safe-link-check-jade.vercel.app)
+**Live:** [https://check.neongulf.com](https://check.neongulf.com) (NeonGulf)
 
 ## Stack
 
@@ -14,12 +14,12 @@ Educational heuristics for fake “PC GTA 6” download lures, phishing unlock p
 ## Features
 
 - Paste-URL UI with example chips
-- Expanded rules: allowlist, blocklist hosts, host/path/query keywords, shorteners, suspicious TLDs, brand lookalikes, double extensions, credentials-in-URL, PC-claim regexes, and more
+- Expanded rules (v3): allowlist, blocklist hosts, host/path/query keywords, shorteners, suspicious TLDs, brand lookalikes, double extensions, credentials-in-URL, PC-claim regexes, repack/crack/trainer lures, and more
 - Result card with verdict, risk meter, hit list, **what to do next**, and official-store CTAs
-- **Shareable results** via `/?u=<url>` (Share button + auto-hydrate)
-- Stronger trust banner + multi-point disclaimer
+- Shareable results via `/?u=<url>`
+- Educational sections: how it works + common fake-download scam patterns
+- About and Privacy pages
 - SEO: metadata, Open Graph / Twitter images, `robots.ts`, `sitemap.ts`, JSON-LD
-- Discord bot stub (`/check` planned later)
 
 ## Run locally
 
@@ -32,11 +32,11 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Patterns
 
-Edit `data/patterns.json` to add hosts, keywords, heuristics, TLDs, or brand tokens. Pattern count is shown in the page footer.
+Edit `data/patterns.json` to add hosts, keywords, heuristics, TLDs, or brand tokens. Pattern count is shown on the home page footer.
 
 ## Deploy
 
-Push to GitHub; Vercel deploys from the production branch. Site: [safe-link-check-jade.vercel.app](https://safe-link-check-jade.vercel.app).
+Push to GitHub; Vercel deploys from the production branch. Canonical host: [check.neongulf.com](https://check.neongulf.com).
 
 ## License
 
