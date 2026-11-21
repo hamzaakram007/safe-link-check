@@ -9,7 +9,7 @@ export function OfficialStores() {
       <p className="lede">
         Real purchases happen on PlayStation Store, Xbox / Microsoft Store, or the publisher’s
         store when listed — not on random “PC installer” pages, torrents, gift-card DMs, or free
-        Ultimate Edition claims. Open these storefronts yourself; do not trust links from strangers.
+        Ultimate Edition claims. Open these stores yourself; do not trust links from strangers.
       </p>
       <ul className="store-list">
         {stores.map((store) => (

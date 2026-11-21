@@ -89,7 +89,7 @@ export default function PrivacyPage() {
           <Link href="/about">About</Link> for product context.
         </p>
 
-        <p className="muted legal-updated">Last updated: November 20, 2026</p>
+        <p className="muted legal-updated">Last updated: November 21, 2026</p>
       </article>
 
       <SiteFooter />

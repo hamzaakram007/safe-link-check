@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, DM_Sans, IBM_Plex_Mono } from "next/font/google";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { BRAND_NAME, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const display = Fraunces({
@@ -24,11 +24,11 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — fake download & scam URL checker`,
+    default: `${SITE_NAME} — fake download & scam URL checker | ${BRAND_NAME}`,
     template: `%s · ${SITE_NAME}`,
   },
   description:
-    "Paste a URL and get a safe / suspicious / scam-pattern check. Educational heuristics for fake PC game download lures, phishing unlock pages, and launch-week scams. Not antivirus. A NeonGulf tool — unaffiliated with Rockstar.",
+    "Paste a URL and get a clear safe / suspicious / scam-pattern result. Free NeonGulf checker for fake PC game download lures and phishing unlock pages. Not antivirus. Buy only from official stores.",
   applicationName: SITE_NAME,
   keywords: [
     "scam link checker",
@@ -38,10 +38,12 @@ export const metadata: Metadata = {
     "phishing URL check",
     "safe link check",
     "console launch scam",
+    "is this download safe",
     "NeonGulf",
   ],
-  authors: [{ name: SITE_NAME }],
-  creator: SITE_NAME,
+  authors: [{ name: BRAND_NAME }],
+  creator: BRAND_NAME,
+  publisher: BRAND_NAME,
   robots: {
     index: true,
     follow: true,
@@ -53,17 +55,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: SITE_NAME,
+    siteName: `${SITE_NAME} · ${BRAND_NAME}`,
     title: `${SITE_NAME} — spot fake download & scam links`,
     description:
-      "URL pattern checker for fake PC installers, phishing unlock pages, and launch-week lures. Not antivirus. Buy only from official stores.",
+      "Paste a link. Get safe / suspicious / scam-pattern signals, why they matched, and what to do. Not antivirus. Buy only from official stores.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} — fake download & scam URL checker`,
     description:
-      "Paste a link. Get safe / suspicious / scam-pattern signals. Educational heuristics — not antivirus.",
+      "Paste a link. Get a clear verdict and next steps. Educational pattern checks — not antivirus.",
   },
   category: "security",
 };
@@ -76,24 +78,61 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: SITE_NAME,
-    url: SITE_URL,
-    applicationCategory: "SecurityApplication",
-    operatingSystem: "Any",
-    description:
-      "Educational URL checker that flags fake download and scam patterns using seeded heuristics.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      name: SITE_NAME,
+      url: SITE_URL,
+      applicationCategory: "SecurityApplication",
+      operatingSystem: "Any",
+      description:
+        "Educational URL checker that flags fake download and scam patterns using a rules list. Not antivirus.",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      isAccessibleForFree: true,
+      provider: {
+        "@type": "Organization",
+        name: BRAND_NAME,
+        url: "https://neongulf.com",
+      },
+      disclaimer:
+        "Educational pattern checks only. Not antivirus. Not affiliated with Rockstar Games, Take-Two, PlayStation, or Xbox.",
     },
-    isAccessibleForFree: true,
-    disclaimer:
-      "Educational heuristics only. Not antivirus. Not affiliated with Rockstar Games, Take-Two, PlayStation, or Xbox.",
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Is there a PC version at console launch?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. At console launch the game is sold for PlayStation and Xbox storefronts. Pages offering a PC installer, Steam unlock, or free setup.exe are almost always scams.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is Safe Link Check antivirus?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. It is an educational link checker. It compares the URL text to a rules list. It does not download files, open the destination, or replace antivirus.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Where should I buy the game?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Buy only from official PlayStation Store, Xbox / Microsoft Store, or the publisher store when listed. Type the address yourself when you can.",
+          },
+        },
+      ],
+    },
+  ];
 
   return (
     <html

@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "updated": "2026-11-20",
+  "version": 4,
+  "updated": "2026-11-21",
   "officialStores": [
     {
       "name": "PlayStation Store",
@@ -547,6 +547,18 @@
       "pattern": "discord.media",
       "reason": "Discord media host \u2014 verify shared executables carefully",
       "severity": "suspicious"
+    },
+    {
+      "id": "hk-free-pc-build",
+      "pattern": "free-pc-",
+      "reason": "Free-PC host naming common in fake installer lures",
+      "severity": "scam"
+    },
+    {
+      "id": "hk-gta6-iso",
+      "pattern": "gta6-iso",
+      "reason": "Fake ISO download host pattern",
+      "severity": "scam"
     }
   ],
   "pathKeywords": [
@@ -572,6 +584,18 @@
       "id": "pk-setup-exe",
       "pattern": "setup.exe",
       "reason": "Direct installer executable in URL",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-windows-installer",
+      "pattern": "windows-installer",
+      "reason": "Windows installer path on a console-only launch title",
+      "severity": "scam"
+    },
+    {
+      "id": "pk-direct-download-pc",
+      "pattern": "direct-download-pc",
+      "reason": "Direct PC download path lure",
       "severity": "scam"
     },
     {
@@ -1214,6 +1238,13 @@
     "gta\\s*6.*fitgirl",
     "gta\\s*6.*steamunlocked",
     "rockstar.*launcher.*update.*gta",
-    "social\\s*club.*update.*required"
+    "social\\s*club.*update.*required",
+    "gta\\s*6.*direct\\s*download",
+    "gta\\s*vi.*direct\\s*download",
+    "download.*gta\\s*6.*for\\s*pc",
+    "gta\\s*6.*windows\\s*download",
+    "free.*gta\\s*vi.*pc",
+    "gta\\s*6.*mega\\.?nz",
+    "gta\\s*6.*mediafire"
   ]
 }

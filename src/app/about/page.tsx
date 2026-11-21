@@ -24,17 +24,17 @@ export default function AboutPage() {
         <p className="legal-kicker">About</p>
         <h1>Safe Link Check</h1>
         <p className="lede">
-          Safe Link Check helps people spot fake game-download and phishing URL patterns before they
-          click, download, or sign in. It is a NeonGulf educational tool — not a security product
-          that scans files or replaces antivirus.
+          Safe Link Check helps people spot fake game-download and phishing links before they click,
+          download, or sign in. It is a NeonGulf educational tool — not a product that scans files
+          or replaces antivirus.
         </p>
 
         <h2>What we do</h2>
         <p>
-          You paste a link. We parse the host, path, and query, then compare them to a maintained
-          rules file: official store allowlists, known lure naming, risky file extensions,
-          shorteners, suspicious TLDs, and brand lookalike tokens. Results are labeled with
-          plain-language next steps and can be shared with a permalink.
+          You paste a link. We read the host, path, and query, then compare them to a maintained
+          rules file: official store allowlists, known lure naming, risky file extensions, short
+          links, odd domain endings, and brand lookalike tokens. Results show plain-language next
+          steps and can be shared with a permalink.
         </p>
 
         <h2>What we do not do</h2>
@@ -62,7 +62,7 @@ export default function AboutPage() {
           data, see the <Link href="/privacy">Privacy</Link> page.
         </p>
 
-        <p className="muted legal-updated">Last updated: November 20, 2026</p>
+        <p className="muted legal-updated">Last updated: November 21, 2026</p>
       </article>
 
       <SiteFooter />

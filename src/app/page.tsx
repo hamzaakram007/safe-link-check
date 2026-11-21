@@ -1,5 +1,6 @@
 import { Disclaimer } from "@/components/Disclaimer";
 import { HowItWorks } from "@/components/HowItWorks";
+import { LaunchFact } from "@/components/LaunchFact";
 import { OfficialStores } from "@/components/OfficialStores";
 import { ScamPatterns } from "@/components/ScamPatterns";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -7,27 +8,34 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { TrustBanner } from "@/components/TrustBanner";
 import { UrlCheckerBoundary } from "@/components/UrlCheckerBoundary";
 import { getPatternsMeta } from "@/lib/check-url";
+import { BRAND_NAME } from "@/lib/site";
 
 export default function Home() {
   const meta = getPatternsMeta();
 
   return (
     <main className="shell">
+      <a href="#checker" className="skip-link">
+        Skip to link checker
+      </a>
+
       <SiteHeader />
 
       <TrustBanner />
 
       <section className="hero">
-        <h1>Check a link before you download or sign in.</h1>
+        <p className="hero-brand">{BRAND_NAME}</p>
+        <h1>Paste a link. See if it looks like a fake download or scam.</h1>
         <p>
-          Paste a URL to see whether it matches known fake-download and phishing patterns — PC
-          installer lures, free “Ultimate Edition” claims, brand lookalikes, and similar launch-week
-          traps. Heuristics only: this is not antivirus, and the destination is never opened from
-          here. Results can be shared with a <code>?u=</code> permalink.
+          Get a clear <strong>safe</strong>, <strong>suspicious</strong>, or{" "}
+          <strong>scam-pattern</strong> result — with why it matched and what to do next. Free,
+          runs in your browser, never opens the link. Not antivirus.
         </p>
       </section>
 
-      <section className="checker-panel" aria-label="URL checker">
+      <LaunchFact />
+
+      <section className="checker-panel" id="checker" aria-label="URL checker">
         <UrlCheckerBoundary />
       </section>
 

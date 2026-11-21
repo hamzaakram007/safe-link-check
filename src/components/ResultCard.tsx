@@ -12,13 +12,13 @@ const VERDICT_LABEL: Record<Verdict, string> = {
 };
 
 const VERDICT_HINT: Record<Verdict, string> = {
-  safe: "No strong scam signals in the seeded rules — still not a guarantee.",
-  suspicious: "Proceed only if you fully trust the source. Prefer official stores.",
-  scam: "High-confidence scam / malware lure patterns. Do not engage.",
+  safe: "No strong scam signals in our rules — still not a guarantee.",
+  suspicious: "Only continue if you fully trust the source. Prefer official stores.",
+  scam: "Strong scam / malware-lure patterns. Do not engage.",
 };
 
 export function ResultCard({ result }: { result: CheckResult }) {
-  const [shareState, setShareState] = useState<"idle" | "copied" | "error">("idle");
+  const [shareState, setShareState] = useState<"idle" | "copied" | "shared" | "error">("idle");
   const stores = getOfficialStores().slice(0, 3);
   const showStoreCtas = result.verdict !== "safe" || !result.isOfficialStore;
 
@@ -30,12 +30,12 @@ export function ResultCard({ result }: { result: CheckResult }) {
     const origin = typeof window !== "undefined" ? window.location.origin : "";
     const shareUrl = buildShareUrl(origin, result.url);
     const title = `Safe Link Check — ${VERDICT_LABEL[result.verdict]}`;
-    const text = `${VERDICT_LABEL[result.verdict]} (risk ${result.score}/100) for ${result.host}`;
+    const text = `${VERDICT_LABEL[result.verdict]} (risk ${result.score}/100) for ${result.host}. There is no PC version at console launch — buy only from official stores.`;
 
     try {
-      if (typeof navigator !== "undefined" && navigator.share) {
+      if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
         await navigator.share({ title, text, url: shareUrl });
-        setShareState("copied");
+        setShareState("shared");
         return;
       }
       await navigator.clipboard.writeText(shareUrl);
@@ -49,6 +49,15 @@ export function ResultCard({ result }: { result: CheckResult }) {
       }
     }
   }
+
+  const shareLabel =
+    shareState === "copied"
+      ? "Link copied"
+      : shareState === "shared"
+        ? "Thanks for sharing"
+        : result.verdict === "scam"
+          ? "Warn a friend — share result"
+          : "Share this result";
 
   return (
     <article className={`result-card verdict-${result.verdict}`} aria-live="polite">
@@ -82,7 +91,7 @@ export function ResultCard({ result }: { result: CheckResult }) {
           <dt>Signals</dt>
           <dd>
             {result.hits.length} matched ·{" "}
-            {result.isOfficialStore ? "official allowlist" : "rules + heuristics"}
+            {result.isOfficialStore ? "official allowlist" : "rules + pattern checks"}
           </dd>
         </div>
       </dl>
@@ -129,22 +138,23 @@ export function ResultCard({ result }: { result: CheckResult }) {
       ) : null}
 
       <div className="result-actions">
-        <button type="button" className="cta ghost" onClick={shareResult}>
-          {shareState === "copied" ? "Link copied" : "Share this result"}
+        <button type="button" className="cta share-cta" onClick={shareResult}>
+          {shareLabel}
         </button>
         {shareState === "error" ? (
           <span className="muted" role="status">
             Could not copy — copy the address bar instead.
           </span>
         ) : (
-          <span className="muted">Creates a permalink with <code>?u=</code> so others see the same check.</span>
+          <span className="muted">
+            Creates a shareable link with <code>?u=</code> so others see the same check.
+          </span>
         )}
       </div>
 
       <p className="result-foot muted">
-        Checked {new Date(result.checkedAt).toLocaleString()} · pattern heuristics only — not
-        antivirus, not a live malware scan, and not affiliated with Rockstar, Take-Two, PlayStation,
-        or Xbox.
+        Checked {new Date(result.checkedAt).toLocaleString()} · pattern rules only — not antivirus,
+        not a live malware scan, and not affiliated with Rockstar, Take-Two, PlayStation, or Xbox.
       </p>
     </article>
   );

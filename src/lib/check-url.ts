@@ -1,4 +1,5 @@
 import patterns from "../../data/patterns.json";
+import { MAX_URL_LENGTH } from "./site";
 import type { CheckResult, PatternHit, PatternsData, Verdict } from "./types";
 
 const data = patterns as PatternsData;
@@ -12,9 +13,21 @@ const SEVERITY_WEIGHT: Record<Verdict, number> = {
 const DOUBLE_EXT_RE =
   /\.(?:pdf|jpg|jpeg|png|gif|doc|docx|txt|mp3|mp4|svg|html|htm)\.(?:exe|scr|bat|cmd|msi|js|vbs|com|pif)$/i;
 
+const CONTROL_CHARS_RE = /[\u0000-\u001F\u007F]/;
+
 function ensureUrl(input: string): URL {
   const trimmed = input.trim();
-  if (!trimmed) throw new Error("Enter a URL to check.");
+  if (!trimmed) throw new Error("Paste a link to check.");
+  if (trimmed.length > MAX_URL_LENGTH) {
+    throw new Error(`That link is too long. Keep it under ${MAX_URL_LENGTH} characters.`);
+  }
+  if (CONTROL_CHARS_RE.test(trimmed)) {
+    throw new Error("That link has invalid characters. Paste a plain http or https URL.");
+  }
+  if (/\s/.test(trimmed)) {
+    throw new Error("Remove spaces from the link, then try again.");
+  }
+
   const withProtocol = /^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(trimmed)
     ? trimmed
     : `https://${trimmed}`;
@@ -22,10 +35,16 @@ function ensureUrl(input: string): URL {
   try {
     url = new URL(withProtocol);
   } catch {
-    throw new Error("That does not look like a valid URL.");
+    throw new Error("That does not look like a valid link.");
   }
   if (url.protocol !== "http:" && url.protocol !== "https:") {
-    throw new Error("Only http and https links are supported.");
+    throw new Error("Only http and https links work here.");
+  }
+  if (!url.hostname || url.hostname === ".") {
+    throw new Error("That link is missing a real website name (host).");
+  }
+  if (url.hostname.length > 253) {
+    throw new Error("That website name (host) is too long to be valid.");
   }
   return url;
 }
@@ -67,15 +86,15 @@ function scoreHits(hits: PatternHit[]): number {
 
 function summarize(verdict: Verdict, isOfficial: boolean, hits: PatternHit[]): string {
   if (isOfficial) {
-    return "This matches a seeded official storefront host. Still confirm the full address in your browser bar before signing in or paying — never from a random “download” page.";
+    return "This matches an official store host on our allowlist. Still check the full address in your browser bar before you sign in or pay — never from a random “download” page.";
   }
   if (verdict === "scam") {
-    return `Strong scam-pattern match (${hits.length} signal${hits.length === 1 ? "" : "s"}). Do not download, run installers, or enter credentials. There is no PC version at console launch — fake installers are a common malware lure.`;
+    return `Strong scam-pattern match (${hits.length} signal${hits.length === 1 ? "" : "s"}). Do not download, run installers, or enter passwords. There is no PC version at console launch — fake installers are a common trap.`;
   }
   if (verdict === "suspicious") {
-    return `Suspicious signals found (${hits.length}). Treat with caution: avoid installers, archives, and “free unlock” pages. Prefer official console stores.`;
+    return `Suspicious signals found (${hits.length}). Be careful: skip installers, zip files, and “free unlock” pages. Prefer official console stores.`;
   }
-  return "No seeded scam patterns matched. That is not a guarantee of safety — this tool uses educational heuristics, not antivirus.";
+  return "No known scam patterns matched. That is not a safety guarantee — this tool uses simple rules, not antivirus.";
 }
 
 function nextStepsFor(verdict: Verdict, isOfficial: boolean): string[] {
@@ -90,22 +109,23 @@ function nextStepsFor(verdict: Verdict, isOfficial: boolean): string[] {
     return [
       "Do not open the link, download files, or enter passwords / wallet seeds.",
       "Close any page that asks you to run a setup.exe, .zip, or “unlock” script.",
-      "Buy only from official PlayStation, Xbox, or Rockstar storefronts.",
-      "If you already entered credentials, change those passwords and enable 2FA.",
+      "Buy only from official PlayStation, Xbox, or Rockstar stores.",
+      "If you already entered a password, change it and turn on 2FA.",
+      "Warn a friend — share this result so they skip the same lure.",
     ];
   }
   if (verdict === "suspicious") {
     return [
       "Do not download installers or archives from this link.",
-      "Expand any shortened URL with a preview tool before visiting.",
-      "Prefer official console storefronts over third-party “download” pages.",
-      "When unsure, assume it is unsafe until proven otherwise.",
+      "Expand any short link before you visit it.",
+      "Prefer official console stores over third-party “download” pages.",
+      "When unsure, treat it as unsafe.",
     ];
   }
   return [
-    "No seeded patterns matched — still avoid unexpected installers and credential forms.",
-    "Prefer official PlayStation, Xbox, or Rockstar storefronts for purchases.",
-    "This check uses educational heuristics only — not a malware scan.",
+    "No known patterns matched — still skip surprise installers and login forms.",
+    "Prefer official PlayStation, Xbox, or Rockstar stores for purchases.",
+    "This check uses simple rules only — not a malware scan.",
   ];
 }
 

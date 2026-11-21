@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { checkUrl } from "@/lib/check-url";
 import { buildShareUrl, readSharedUrlParam } from "@/lib/share";
-import { SITE_URL } from "@/lib/site";
+import { MAX_URL_LENGTH, SITE_URL } from "@/lib/site";
 import type { CheckResult } from "@/lib/types";
 import { ResultCard } from "./ResultCard";
 
@@ -15,6 +15,10 @@ const EXAMPLES = [
   "https://rockstar-login-secure.xyz/verify-account",
 ];
 
+/** Soft client throttle — checks run locally; this stops spam-click thrash. */
+const MIN_CHECK_GAP_MS = 350;
+const MAX_CHECKS_PER_MINUTE = 40;
+
 export function UrlChecker() {
   const router = useRouter();
   const pathname = usePathname();
@@ -24,6 +28,9 @@ export function UrlChecker() {
   const [result, setResult] = useState<CheckResult | null>(null);
   const [isPending, startTransition] = useTransition();
   const [hydratedShare, setHydratedShare] = useState(false);
+  const lastCheckAt = useRef(0);
+  const checkTimestamps = useRef<number[]>([]);
+  const resultHeadingRef = useRef<HTMLDivElement>(null);
 
   const canSubmit = useMemo(() => value.trim().length > 0 && !isPending, [value, isPending]);
 
@@ -34,8 +41,28 @@ export function UrlChecker() {
     router.replace(relative, { scroll: false });
   }
 
+  function allowCheck(): string | null {
+    const now = Date.now();
+    if (now - lastCheckAt.current < MIN_CHECK_GAP_MS) {
+      return "Slow down a second — one check at a time.";
+    }
+    checkTimestamps.current = checkTimestamps.current.filter((t) => now - t < 60_000);
+    if (checkTimestamps.current.length >= MAX_CHECKS_PER_MINUTE) {
+      return "Too many checks in a short time. Wait a minute, then try again.";
+    }
+    return null;
+  }
+
   function runCheck(raw: string, opts?: { syncUrl?: boolean }) {
     setError(null);
+    const rateError = allowCheck();
+    if (rateError) {
+      setError(rateError);
+      return;
+    }
+    lastCheckAt.current = Date.now();
+    checkTimestamps.current.push(lastCheckAt.current);
+
     startTransition(() => {
       try {
         const next = checkUrl(raw);
@@ -43,9 +70,12 @@ export function UrlChecker() {
         if (opts?.syncUrl !== false) {
           syncShareParam(raw);
         }
+        queueMicrotask(() => {
+          resultHeadingRef.current?.focus({ preventScroll: true });
+        });
       } catch (e) {
         setResult(null);
-        setError(e instanceof Error ? e.message : "Could not check that URL.");
+        setError(e instanceof Error ? e.message : "Could not check that link.");
       }
     });
   }
@@ -69,9 +99,10 @@ export function UrlChecker() {
           e.preventDefault();
           runCheck(value);
         }}
+        noValidate
       >
-        <label htmlFor="url" className="sr-only">
-          Paste a URL to check
+        <label htmlFor="url" className="input-label">
+          Paste a link to check
         </label>
         <div className="input-row">
           <input
@@ -80,19 +111,26 @@ export function UrlChecker() {
             type="text"
             inputMode="url"
             autoComplete="url"
-            placeholder="Paste a full URL — including links from DMs, ads, or “download” posts"
+            spellCheck={false}
+            maxLength={MAX_URL_LENGTH}
+            placeholder="https://… paste a full link from a DM, ad, or “download” post"
             value={value}
             onChange={(e) => setValue(e.target.value)}
             className="url-input"
+            aria-invalid={error ? true : undefined}
+            aria-describedby={error ? "url-error" : "url-help"}
           />
           <button type="submit" className="cta" disabled={!canSubmit}>
             {isPending ? "Checking…" : "Check link"}
           </button>
         </div>
+        <p id="url-help" className="input-help muted">
+          We only read the text of the link. We never open it, download files, or scan your device.
+        </p>
       </form>
 
-      <div className="example-row">
-        <span className="muted">Examples:</span>
+      <div className="example-row" aria-label="Example links">
+        <span className="muted">Try an example:</span>
         {EXAMPLES.map((ex) => (
           <button
             key={ex}
@@ -109,8 +147,24 @@ export function UrlChecker() {
         ))}
       </div>
 
-      {error ? <p className="error-banner" role="alert">{error}</p> : null}
-      {result ? <ResultCard result={result} /> : null}
+      {error ? (
+        <p id="url-error" className="error-banner" role="alert">
+          {error}
+        </p>
+      ) : null}
+
+      {!result && !error ? (
+        <p className="empty-hint muted" role="status">
+          Paste a link → get <strong>safe</strong>, <strong>suspicious</strong>, or{" "}
+          <strong>scam-pattern</strong> → see why → know what to do next.
+        </p>
+      ) : null}
+
+      {result ? (
+        <div ref={resultHeadingRef} tabIndex={-1} className="result-focus-root">
+          <ResultCard result={result} />
+        </div>
+      ) : null}
     </div>
   );
 }
